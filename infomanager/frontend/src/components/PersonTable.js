@@ -4,6 +4,7 @@ import PersonTableRow from "./PersonTableRow";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { getPeople } from "../actions/people";
+import { formatName } from "../helpers/formatName";
 
 export default function PersonTable() {
   const [column, setColumn] = useState(null);
@@ -18,7 +19,12 @@ export default function PersonTable() {
   }, []);
 
   useEffect(() => {
-    setSortablePeople(people);
+    
+    // for each firstname & lastname, capitalize them
+    const formattedPeople = people.map(({ firstname, lastname, ...rest }) => {
+      return { firstname: formatName(firstname), lastname: formatName(lastname), ...rest };
+    });
+    setSortablePeople(formattedPeople);
     return () => {
       setSortablePeople([]);
     };
@@ -40,8 +46,8 @@ export default function PersonTable() {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell
-            sorted={column === "firstName" ? direction : null}
-            onClick={handleSort("firstName")}
+            sorted={column === "firstname" ? direction : null}
+            onClick={handleSort("firstname")}
           >
             Name
           </Table.HeaderCell>
@@ -66,16 +72,18 @@ export default function PersonTable() {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {sortablePeople.map(({ id, firstname, lastname, email, age, income }) => (
-          <PersonTableRow
-            key={id}
-            firstname={firstname}
-            lastname={lastname}
-            email={email}
-            age={age}
-            income={income}
-          />
-        ))}
+        {sortablePeople.map(
+          ({ id, firstname, lastname, email, age, income }) => (
+            <PersonTableRow
+              key={id}
+              firstname={firstname}
+              lastname={lastname}
+              email={email}
+              age={age}
+              income={income}
+            />
+          )
+        )}
       </Table.Body>
     </Table>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import formatMoney from "../helpers/formatMoney";
 import { useDispatch } from "react-redux";
@@ -12,18 +12,31 @@ export default function PersonTableRow({
   age,
   income,
 }) {
+  const [show, setShow] = useState(false);
+
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    console.log("trying to delete " + id);
     dispatch(deletePerson(id));
   };
 
   // TODO: Show a delete button within first cell on hover
   // should dispatch a delete event
   return (
-    <Table.Row>
+    <Table.Row
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+    >
       <Table.Cell>
-        <Button onClick={() => handleDelete(id)}>X</Button>
+        {show && (
+          <Button
+            negative
+            circular
+            icon="delete"
+            size="mini"
+            compact
+            onClick={() => handleDelete(id)}
+          />
+        )}
         {firstname} {lastname}
       </Table.Cell>
       <Table.Cell>{age}</Table.Cell>

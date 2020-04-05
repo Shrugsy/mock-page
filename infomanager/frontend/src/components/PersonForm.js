@@ -107,7 +107,7 @@ export default function PersonForm() {
         />
       </Form.Group>
       <StyledButtonContainer>
-        <Button floated="right" type="submit">
+        <Button floated="right" type="submit" primary>
           Submit
         </Button>
       </StyledButtonContainer>

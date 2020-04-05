@@ -4,6 +4,8 @@ import HeaderSection from "./HeaderSection";
 import Content from "./Content";
 import FooterSection from "./FooterSection";
 import { Responsive } from "semantic-ui-react";
+import { Provider } from 'react-redux';
+import store from '../store'
 
 function App() {
   return (
@@ -27,5 +29,7 @@ styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css
 document.head.appendChild(styleLink);
 
 ReactDOM.render(
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
     , document.getElementById('root'));

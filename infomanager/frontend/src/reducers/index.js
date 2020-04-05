@@ -11,7 +11,7 @@ import {
 const initialState = {
   people: [],
   addPersonSuccess: false,
-  error: { msg: {}, status: null },
+  error: { msg: "", status: null },
   message: "",
 };
 
@@ -33,7 +33,7 @@ export default (state = initialState, { type, payload }) => {
     case CREATE_ERROR:
       return {
         ...state,
-        error: { msg: payload.response.data, status: payload.response.status },
+        error: payload,
       };
     case CREATE_MESSAGE:
       return { ...state, message: payload };

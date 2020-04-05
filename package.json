@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./infomanager/frontend/src/index.js --output ./infomanager/frontend/static/frontend/main.js",
+    "dev": "webpack --mode development --watch ./infomanager/frontend/src/index.js --output ./infomanager/frontend/static/frontend/main.js",
     "build": "webpack --mode production ./infomanager/frontend/src/index.js --output ./infomanager/frontend/static/frontend/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,12 +25,21 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "redux-devtools-extension": "^2.13.8",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-alert": "^7.0.0",
+    "react-alert-template-basic": "^1.0.0",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.88.2",
+    "styled-components": "^5.0.1"
   }
 }

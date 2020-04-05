@@ -3,6 +3,7 @@ import { Table, Button } from "semantic-ui-react";
 import formatMoney from "../helpers/formatMoney";
 import { useDispatch } from "react-redux";
 import { deletePerson } from "../actions/people";
+import PropTypes from "prop-types";
 
 export default function PersonTableRow({
   id,
@@ -44,4 +45,13 @@ export default function PersonTableRow({
       <Table.Cell>{formatMoney(income)}</Table.Cell>
     </Table.Row>
   );
+}
+
+PersonTableRow.propTypes = {
+    id: PropTypes.number.isRequired,
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    income: PropTypes.number.isRequired
 }

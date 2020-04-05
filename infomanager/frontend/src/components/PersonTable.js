@@ -73,14 +73,11 @@ export default function PersonTable() {
       </Table.Header>
       <Table.Body>
         {sortablePeople.map(
-          ({ id, firstname, lastname, email, age, income }) => (
+          ({ id, ...rest }) => (
             <PersonTableRow
               key={id}
-              firstname={firstname}
-              lastname={lastname}
-              email={email}
-              age={age}
-              income={income}
+              id={id}
+              {...rest}
             />
           )
         )}

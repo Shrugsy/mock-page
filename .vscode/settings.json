@@ -1,4 +1,5 @@
 {
-    "python.pythonPath": "venv/bin/python",
-    "python.envFile": ".env"
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    "python.envFile": ".env",
+    "python.venvPath": "~/venv"
 }

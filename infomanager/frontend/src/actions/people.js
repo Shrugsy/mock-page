@@ -4,8 +4,6 @@ import {
   ADD_PERSON_SUCCESS,
   DELETE_PERSON,
   CLEAR_ADD_PERSON_SUCCESS,
-  CREATE_ERROR,
-  CREATE_MESSAGE,
 } from "./index";
 import axios from "axios";
 import { createError } from "./errors";

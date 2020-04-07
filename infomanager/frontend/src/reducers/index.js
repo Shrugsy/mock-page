@@ -6,7 +6,6 @@ import {
 } from "../actions";
 
 const initialState = {
-  people: [],
   addPersonSuccess: false,
   error: { msg: "", status: null },
   message: "",

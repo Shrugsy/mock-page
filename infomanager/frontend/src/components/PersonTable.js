@@ -2,24 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Table } from "semantic-ui-react";
 import PersonTableRow from "./PersonTableRow";
 import _ from "lodash";
-import { useSelector, useDispatch } from "react-redux";
-import { getPeople } from "../actions/people";
+import { useSelector } from "react-redux";
 import { formatName } from "../helpers/formatName";
+import { peopleSelector } from '../selectors'
 
 export default function PersonTable() {
   const [column, setColumn] = useState(null);
   const [sortablePeople, setSortablePeople] = useState([]);
   const [direction, setDirection] = useState(null);
 
-  const people = useSelector((state) => state.people);
-  const dispatch = useDispatch();
+  // get people from state
+  const people = useSelector(state => peopleSelector(state))
 
   useEffect(() => {
-    dispatch(getPeople());
-  }, []);
-
-  useEffect(() => {
-    
     // for each firstname & lastname, capitalize them
     const formattedPeople = people.map(({ firstname, lastname, ...rest }) => {
       return { firstname: formatName(firstname), lastname: formatName(lastname), ...rest };

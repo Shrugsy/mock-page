@@ -5,8 +5,8 @@ import { createError } from "../actions/errors";
 import { createMessage } from "../actions/messages";
 
 export default function Alerts() {
-  const error = useSelector((state) => state.error);
-  const message = useSelector((state) => state.message);
+  const error = useSelector((state) => state.info.error);
+  const message = useSelector((state) => state.info.message);
 
   const alert = useAlert();
   const dispatch = useDispatch();

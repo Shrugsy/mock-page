@@ -20,8 +20,6 @@ export default function PersonTableRow({
     dispatch(deletePerson(id));
   };
 
-  // TODO: Show a delete button within first cell on hover
-  // should dispatch a delete event
   return (
     <Table.Row
       onMouseEnter={() => setShow(true)}

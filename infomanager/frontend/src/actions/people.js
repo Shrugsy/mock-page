@@ -1,5 +1,4 @@
 import {
-  GET_PEOPLE,
   ADD_PERSON,
   ADD_PERSON_SUCCESS,
   DELETE_PERSON,
@@ -9,12 +8,16 @@ import axios from "axios";
 import { createError } from "./errors";
 import { createMessage } from "./messages";
 
-// GET_PEOPLE
-export const getPeople = () => (dispatch) => {
+// INITIALIZE ALL PEOPLE FROM DB
+export const initializePeople = () => (dispatch) => {
   axios
     .get("/api/people/")
     .then((res) => {
-      dispatch({ type: GET_PEOPLE, payload: res.data });
+      // This should potentially clear all 'Person's from the state first
+      // It is currently only expected to be called on load so does not currently need to
+      res.data.forEach((person) => {
+        dispatch({ type: ADD_PERSON, payload: person });
+      });
     })
     .catch((err) => {
       // console.log(err);
@@ -32,6 +35,7 @@ export const addPerson = (person) => (dispatch) => {
       dispatch({ type: ADD_PERSON_SUCCESS, payload: true });
     })
     .catch((err) => {
+      console.log(err);
       dispatch(createError(err.response.data, err.response.status));
     });
 };
@@ -50,7 +54,6 @@ export const deletePerson = (id) => (dispatch) => {
       dispatch(createMessage("Person deleted"));
     })
     .catch((err) => {
-      // console.log(err);
       dispatch(createError(err.response.data, err.response.status));
     });
 };

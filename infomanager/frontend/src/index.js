@@ -6,6 +6,9 @@ import store from "./store";
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import 'semantic-ui-css/semantic.min.css'
+import { initializePeople } from "./actions/people";
+
+store.dispatch(initializePeople())
 
 // Alert Options
 const alertOptions = {

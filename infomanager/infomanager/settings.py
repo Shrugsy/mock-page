@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
             # use below for linux config
-            # 'read_default_file': '/etc/my.cnf',
+            'read_default_file': '/etc/my.cnf',
             # use below for windows config
-            'read_default_file': 'C:/Windows/my.cnf',
+            # 'read_default_file': 'C:/Windows/my.cnf',
         },
     }
 }
@@ -128,7 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend', "build", "static"),  # update the STATICFILES_DIRS
+    os.path.join(BASE_DIR, 'frontend', "build", "static"),
 )
 
 REST_FRAMEWORK = {

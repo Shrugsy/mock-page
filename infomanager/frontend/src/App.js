@@ -5,8 +5,6 @@ import FooterSection from "./components/FooterSection";
 import { Responsive } from "semantic-ui-react";
 import Alerts from "./components/Alerts";
 
-
-
 function App() {
   return (
     <div

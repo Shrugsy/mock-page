@@ -25,7 +25,7 @@ export default function PersonForm() {
   const [age, setAge] = useState("");
   const [income, setIncome] = useState("");
 
-  const addPersonSuccess = useSelector((state) => state.addPersonSuccess);
+  const addPersonSuccess = useSelector((state) => state.info.addPersonSuccess);
 
   const dispatch = useDispatch();
 

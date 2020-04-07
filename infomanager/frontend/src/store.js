@@ -1,13 +1,21 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';
-import allReducers from "./reducers";
+import info from "./reducers";
 
-// TODO: include redux orm
+import { createReducer } from 'redux-orm'
+import { orm } from './models'
+
+
 const middleware = [thunk];
 
+const rootReducer = combineReducers({
+  info,
+  orm: createReducer(orm)
+})
+
 const store = createStore(
-  allReducers,
+  rootReducer,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 

@@ -1,5 +1,0 @@
-{
-    "python.pythonPath": "venv/bin/python",
-    "python.envFile": ".env",
-    "python.venvPath": "~/venv"
-}

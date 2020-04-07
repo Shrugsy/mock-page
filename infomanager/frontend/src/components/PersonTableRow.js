@@ -46,10 +46,10 @@ export default function PersonTableRow({
 }
 
 PersonTableRow.propTypes = {
-    id: PropTypes.number.isRequired,
-    firstname: PropTypes.string.isRequired,
-    lastname: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired,
-    income: PropTypes.number.isRequired
-}
+  id: PropTypes.number.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  income: PropTypes.number.isRequired,
+};

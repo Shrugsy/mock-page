@@ -123,6 +123,13 @@ class CreateNewPersonTest(TestCase):
             'age': 30,
             'income': 100000
         }
+        self.invalid_payload1 = {
+            'firstname': 'Mark',
+            'lastname': 'Markington',
+            'email': 'mark2@email.com',
+            'age': 'aString',
+            'income': 100000
+        }
 
     # VALID
     def test_create_valid_person(self):
@@ -136,6 +143,14 @@ class CreateNewPersonTest(TestCase):
     def test_create_invalid_person(self):
         response = client.post(
             '/api/people/', data=json.dumps(self.invalid_payload), content_type='application/json')
+        # print(response.data)
+        # print(response.status_code)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    # INVALID
+    def test_create_invalid_person(self):
+        response = client.post(
+            '/api/people/', data=json.dumps(self.invalid_payload1), content_type='application/json')
         # print(response.data)
         # print(response.status_code)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

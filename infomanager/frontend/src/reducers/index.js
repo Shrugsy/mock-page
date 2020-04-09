@@ -5,7 +5,7 @@ import {
   CREATE_MESSAGE,
 } from "../actions/types";
 
-const initialState = {
+export const initialState = {
   addPersonSuccess: false,
   error: { msg: "", status: "" },
   message: "",

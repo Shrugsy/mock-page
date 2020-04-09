@@ -37,5 +37,5 @@ cd infomanager/frontend
 npm install
 npm run-script build
 ```
-*These frontend build files will be served by the backend*
-Open `localhost` in your browser
+*These frontend build files will be served by the backend*  
+Open `localhost` in your browser to view the page

@@ -49,7 +49,7 @@ export default function PersonForm() {
       setIncome("");
       dispatch(clearAddPersonSuccess())
     }
-  }, [addPersonSuccess]);
+  }, [addPersonSuccess, dispatch]);
 
   return (
     <StyledForm onSubmit={handleSubmit}>

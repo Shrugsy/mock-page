@@ -3,7 +3,7 @@ import { Table } from "semantic-ui-react";
 import PersonTableRow from "./PersonTableRow";
 import _ from "lodash";
 import { useSelector } from "react-redux";
-import { formatName } from "../helpers/formatName";
+import formatName from "../helpers/formatName";
 import { peopleSelector } from '../selectors'
 
 export default function PersonTable() {

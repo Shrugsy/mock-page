@@ -32,7 +32,7 @@ export default function Alerts() {
     }
 
     // console.log(error.msg);
-  }, [error]);
+  }, [error, alert, dispatch]);
 
   useEffect(() => {
     if (message) {
@@ -41,7 +41,7 @@ export default function Alerts() {
       dispatch(createMessage());
     }
     // console.log(message);
-  }, [message]);
+  }, [message, alert, dispatch]);
 
   return <></>;
 }

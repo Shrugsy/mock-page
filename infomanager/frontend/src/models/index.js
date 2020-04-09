@@ -1,5 +1,5 @@
 import { Model, attr, ORM} from "redux-orm";
-import { ADD_PERSON, DELETE_PERSON } from "../actions";
+import { ADD_PERSON, DELETE_PERSON } from "../actions/types";
 
 export class Person extends Model {
   static get fields() {

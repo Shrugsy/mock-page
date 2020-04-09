@@ -3,11 +3,11 @@ import {
   CLEAR_ADD_PERSON_SUCCESS,
   CREATE_ERROR,
   CREATE_MESSAGE,
-} from "../actions";
+} from "../actions/types";
 
 const initialState = {
   addPersonSuccess: false,
-  error: { msg: "", status: null },
+  error: { msg: "", status: "" },
   message: "",
 };
 

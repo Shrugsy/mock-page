@@ -3,17 +3,17 @@ import {
   ADD_PERSON_SUCCESS,
   DELETE_PERSON,
   CLEAR_ADD_PERSON_SUCCESS,
-} from "./index";
+} from "./types";
 import axios from "axios";
 import { createError } from "./errors";
 import { createMessage } from "./messages";
 
 // INITIALIZE ALL PEOPLE FROM DB
 export const initializePeople = () => (dispatch) => {
-  axios
+  return axios
     .get("/api/people/")
     .then((res) => {
-      // This should potentially clear all 'Person's from the state first
+      // This doesn't currently, but should potentially clear all 'Person's from the state first
       // It is currently only expected to be called on load so does not currently need to
       res.data.forEach((person) => {
         dispatch({ type: ADD_PERSON, payload: person });
@@ -27,7 +27,7 @@ export const initializePeople = () => (dispatch) => {
 
 // ADD_PERSON
 export const addPerson = (person) => (dispatch) => {
-  axios
+  return axios
     .post("/api/people/", person)
     .then((res) => {
       dispatch({ type: ADD_PERSON, payload: res.data });
@@ -35,19 +35,19 @@ export const addPerson = (person) => (dispatch) => {
       dispatch({ type: ADD_PERSON_SUCCESS, payload: true });
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       dispatch(createError(err.response.data, err.response.status));
     });
 };
 
 // CLEAR_ADD_PERSON_SUCCESS
 export const clearAddPersonSuccess = () => (dispatch) => {
-  dispatch({ type: CLEAR_ADD_PERSON_SUCCESS, payload: false });
+  return dispatch({ type: CLEAR_ADD_PERSON_SUCCESS, payload: false });
 };
 
 // DELETE_PERSON
 export const deletePerson = (id) => (dispatch) => {
-  axios
+  return axios
     .delete(`/api/people/${id}/`)
     .then((res) => {
       dispatch({ type: DELETE_PERSON, payload: id });

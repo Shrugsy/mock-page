@@ -18,7 +18,7 @@ describe("Alerts", () => {
     const middleware = [thunk];
     const mockStore = configureMockStore(middleware);
     const store = mockStore(fullState);
-    const wrapper = mount(
+    mount(
       <Provider store={store}>
         <AlertProvider template={AlertTemplate}>
           <Alerts />
@@ -40,7 +40,7 @@ describe("Alerts", () => {
       payload: { msg: "", status: "" },
     };
     const store = mockStore(fullState);
-    const wrapper = mount(
+    mount(
       <Provider store={store}>
         <AlertProvider template={AlertTemplate}>
           <Alerts />
@@ -65,7 +65,7 @@ describe("Alerts", () => {
     };
 
     const store = mockStore(fullState);
-    const wrapper = mount(
+    mount(
       <Provider store={store}>
         <AlertProvider template={AlertTemplate}>
           <Alerts />

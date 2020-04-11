@@ -1,19 +1,23 @@
 import React from "react";
-import PersonForm from "./PersonForm";
-import PersonTable from "./PersonTable";
 import { Container, Grid } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
-export default function Content() {
+export default function Content({ LeftComponent, RightComponent }) {
   return (
-    <Container style={{padding: '3rem 0', flexGrow: '1'}}>
+    <Container style={{ padding: "3rem 0", flexGrow: "1" }}>
       <Grid stackable>
         <Grid.Column width={7}>
-          <PersonForm />
+          <LeftComponent />
         </Grid.Column>
         <Grid.Column width={9}>
-          <PersonTable />
+          <RightComponent />
         </Grid.Column>
       </Grid>
     </Container>
   );
 }
+
+Content.propTypes = {
+  LeftComponent: PropTypes.elementType.isRequired,
+  RightComponent: PropTypes.elementType.isRequired,
+};

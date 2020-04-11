@@ -22,16 +22,16 @@ let peopleData = [
 ];
 
 describe("Models", () => {
-  let state;
+  // let state;
   let ormState;
   let session;
 
   beforeEach(() => {
     ormState = orm.getEmptyState();
     session = orm.mutableSession(ormState);
-    state = {
-      orm: ormState,
-    };
+    // state = {
+    //   orm: ormState,
+    // };
   });
 
   it("correctly handles ADD_PERSON", () => {

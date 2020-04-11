@@ -47,7 +47,7 @@ export default function PersonForm() {
       setEmail("");
       setAge("");
       setIncome("");
-      dispatch(clearAddPersonSuccess())
+      dispatch(clearAddPersonSuccess());
     }
   }, [addPersonSuccess, dispatch]);
 
@@ -56,6 +56,7 @@ export default function PersonForm() {
       <Form.Group inline>
         <Form.Field label="First Name" width={4} />
         <StyledInput
+          id="input-firstname"
           required
           placeholder="First Name"
           width={12}
@@ -66,6 +67,7 @@ export default function PersonForm() {
       <Form.Group inline>
         <Form.Field label="Last Name" width={4} />
         <StyledInput
+          id="input-lastname"
           required
           placeholder="Last Name"
           width={12}
@@ -76,6 +78,7 @@ export default function PersonForm() {
       <Form.Group inline>
         <Form.Field label="Email" width={4} />
         <StyledInput
+          id="input-email"
           required
           type="email"
           placeholder="Email"
@@ -87,6 +90,7 @@ export default function PersonForm() {
       <Form.Group inline>
         <Form.Field label="Age" width={4} />
         <StyledInput
+          id="input-age"
           required
           type="number"
           placeholder="Age"
@@ -98,6 +102,7 @@ export default function PersonForm() {
       <Form.Group inline>
         <Form.Field label="Income" width={4} />
         <StyledInput
+          id="input-income"
           required
           type="number"
           placeholder="Income"

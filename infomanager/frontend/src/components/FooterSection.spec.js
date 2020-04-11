@@ -4,15 +4,15 @@ import { shallow } from "enzyme";
 import FooterSection from "./FooterSection";
 
 describe("FooterSection", () => {
-  let comp;
+  let wrapper;
   beforeAll(() => {
-    comp = shallow(<FooterSection />);
+    wrapper = shallow(<FooterSection />);
   });
   it("should render a center aligned segment", () => {
-    expect(comp.prop("textAlign")).toBe("center");
+    expect(wrapper.prop("textAlign")).toBe("center");
   });
 
   it("should display a copyright message with the current year", () => {
-    expect(comp.childAt(1).text()).toBe(new Date().getFullYear().toString());
+    expect(wrapper.childAt(1).text()).toBe(new Date().getFullYear().toString());
   });
 });

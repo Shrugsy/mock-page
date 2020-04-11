@@ -11,9 +11,7 @@ module.exports = function (config) {
     frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
-    files: [
-      "setupTests.js"
-    ],
+    files: ["setupTests.js"],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -21,7 +19,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'setupTests.js': ['webpack']
+      "setupTests.js": ["webpack"],
     },
 
     // test results reporter to use
@@ -56,18 +54,17 @@ module.exports = function (config) {
     concurrency: Infinity,
 
     // create webpack config!
-    webpack: createWebpackConfig()
+    webpack: createWebpackConfig(),
   });
 };
 
-
 function createWebpackConfig() {
-  const craWebpackConfig = require('react-scripts/config/webpack.config.js')();
-  delete craWebpackConfig['output'];
-  delete craWebpackConfig['entry'];
-  delete craWebpackConfig['optimization'];
-  delete craWebpackConfig['plugins'];
-  craWebpackConfig['devtool'] = 'inline-source-map';
-  craWebpackConfig['mode'] = 'development';
+  const craWebpackConfig = require("react-scripts/config/webpack.config.js")();
+  delete craWebpackConfig["output"];
+  delete craWebpackConfig["entry"];
+  delete craWebpackConfig["optimization"];
+  delete craWebpackConfig["plugins"];
+  craWebpackConfig["devtool"] = "inline-source-map";
+  craWebpackConfig["mode"] = "development";
   return craWebpackConfig;
 }

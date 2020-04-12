@@ -39,3 +39,18 @@ npm run-script build
 ```
 *These frontend build files will be served by the backend*  
 Open `localhost` in your browser to view the page
+
+## Testing
+### Backend
+Activate virtual environment, cd into main backend folder and run tests:
+```
+source venv/ben/activate
+cd infomanager
+python manage.py test
+```
+### Frontend
+cd into frontend folder and run tests:
+```
+cd infomanager/frontend
+npm run-script test
+```

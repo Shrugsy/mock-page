@@ -4,7 +4,7 @@ import PersonTableRow from "./PersonTableRow";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 import formatName from "../helpers/formatName";
-import { peopleSelector } from '../selectors'
+import { peopleSelector } from "../selectors";
 
 export default function PersonTable() {
   const [column, setColumn] = useState(null);
@@ -12,12 +12,16 @@ export default function PersonTable() {
   const [direction, setDirection] = useState(null);
 
   // get people from state
-  const people = useSelector(state => peopleSelector(state))
+  const people = useSelector((state) => peopleSelector(state));
 
   useEffect(() => {
     // for each firstname & lastname, capitalize them
     const formattedPeople = people.map(({ firstname, lastname, ...rest }) => {
-      return { firstname: formatName(firstname), lastname: formatName(lastname), ...rest };
+      return {
+        firstname: formatName(firstname),
+        lastname: formatName(lastname),
+        ...rest,
+      };
     });
     setSortablePeople(formattedPeople);
     return () => {
@@ -41,24 +45,28 @@ export default function PersonTable() {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell
+            id="name-header"
             sorted={column === "firstname" ? direction : null}
             onClick={handleSort("firstname")}
           >
             Name
           </Table.HeaderCell>
           <Table.HeaderCell
+            id="age-header"
             sorted={column === "age" ? direction : null}
             onClick={handleSort("age")}
           >
             Age
           </Table.HeaderCell>
           <Table.HeaderCell
+            id="email-header"
             sorted={column === "email" ? direction : null}
             onClick={handleSort("email")}
           >
             E-mail
           </Table.HeaderCell>
           <Table.HeaderCell
+            id="income-header"
             sorted={column === "income" ? direction : null}
             onClick={handleSort("income")}
           >
@@ -67,15 +75,9 @@ export default function PersonTable() {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {sortablePeople.map(
-          ({ id, ...rest }) => (
-            <PersonTableRow
-              key={id}
-              id={id}
-              {...rest}
-            />
-          )
-        )}
+        {sortablePeople.map(({ id, ...rest }) => (
+          <PersonTableRow key={id} id={id} {...rest} />
+        ))}
       </Table.Body>
     </Table>
   );

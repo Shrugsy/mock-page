@@ -11,14 +11,6 @@ import * as types from "../actions/types";
 
 import { initialState } from "../reducers";
 
-const fullState = {
-  info: initialState,
-};
-const middleware = [thunk];
-
-const mockStore = configureMockStore(middleware);
-const store = mockStore(fullState);
-
 const person0 = {
   firstname: "john",
   lastname: "smith",
@@ -29,16 +21,17 @@ const person0 = {
 const jsonHeader = { "content-type": "application/json" };
 
 describe("PersonForm", () => {
-  let mock;
-  beforeEach(() => {
-    mock = new MockAdapter(axios);
-    store.clearActions();
-  });
-  afterEach(() => {
-    mock.restore();
-    store.clearActions();
-  });
   it("should display a form which dispatches an ADD_PERSON action based on the input", async () => {
+    const fullState = {
+      info: initialState,
+    };
+    const middleware = [thunk];
+    
+    const mockStore = configureMockStore(middleware);
+    const store = mockStore(fullState);
+    const mock = new MockAdapter(axios);
+    store.clearActions();
+
     const wrapper = mount(
       <Provider store={store}>
         <PersonForm />
@@ -81,5 +74,33 @@ describe("PersonForm", () => {
     // expect 'addPerson(person0)' to have been dispatched
     // making do with the action until able to work out spying on an exported function
     expect(store.getActions()[0]).toEqual(expectedAction);
+    mock.restore();
+    store.clearActions();
   });
+
+  it("should dispatch clearAddPersonSuccess() when addPersonSuccess is truthy", ()=>{
+    const fullState = {
+      info: {...initialState, addPersonSuccess: true},
+    };
+
+    const middleware = [thunk];
+    
+    const mockStore = configureMockStore(middleware);
+    const store = mockStore(fullState);
+    const mock = new MockAdapter(axios);
+    store.clearActions();
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <PersonForm />
+      </Provider>
+    );
+    
+    const expectedAction = {
+      type: types.CLEAR_ADD_PERSON_SUCCESS,
+      payload: false,
+    };
+
+    expect(store.getActions()[0]).toEqual(expectedAction);
+  })
 });

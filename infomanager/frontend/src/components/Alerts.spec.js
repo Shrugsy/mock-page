@@ -1,6 +1,6 @@
 import React from "react";
 import Alerts from "./Alerts";
-import { mount } from "enzyme";
+import { mount } from "../../setupEnzyme";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";

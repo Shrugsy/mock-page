@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow } from "../../setupEnzyme";
 
 import Content from "./Content";
 const div1 = () => <div>Some text in the div</div>;

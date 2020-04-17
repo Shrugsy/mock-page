@@ -11,21 +11,47 @@ module.exports = function (config) {
     frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
-    files: ["setupTests.js"],
+    files: [
+      { pattern: "src/**/*.js" },
+      // { pattern: 'src/**/!(*spec).js'},
+      // { pattern: 'src/**/*.spec.js'}
+    ],
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: ["src/index.js"],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "setupTests.js": ["webpack"],
+      "src/**/*.js": ["webpack"],
+      // 'src/**/*spec.js': ['webpack'],
+      // 'src/**/!(*spec).js': ['webpack', 'coverage']
+    },
+
+    webpack: {
+      mode: "development",
+      module: {
+        rules: [
+          {
+            exclude: /node_modules/,
+            test: /\.js$/i,
+            loader: "babel-loader",
+          },
+          {
+            test: /\.(jpe?g|png|gif|svg|map|css|std|indent|html|txt)$/i,
+            loader: "ignore-loader",
+          },
+        ],
+      },
+    },
+    webpackMiddleware: {
+      noInfo: true,
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["progress"],
+    reporters: ["progress", "coverage"],
 
     // web server port
     port: 9876,
@@ -43,7 +69,7 @@ module.exports = function (config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     // browsers: ["Chrome", "Firefox", "IE"],
-    browsers: ["Chrome"],
+    browsers: ["ChromeHeadless"],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -52,19 +78,5 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
-
-    // create webpack config!
-    webpack: createWebpackConfig(),
   });
 };
-
-function createWebpackConfig() {
-  const craWebpackConfig = require("react-scripts/config/webpack.config.js")();
-  delete craWebpackConfig["output"];
-  delete craWebpackConfig["entry"];
-  delete craWebpackConfig["optimization"];
-  delete craWebpackConfig["plugins"];
-  craWebpackConfig["devtool"] = "inline-source-map";
-  craWebpackConfig["mode"] = "development";
-  return craWebpackConfig;
-}

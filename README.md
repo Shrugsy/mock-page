@@ -7,6 +7,12 @@ mysql> CREATE DATABASE infomanager;
 mysql> SHOW DATABASES;
 mysql> EXIT;
 ```
+* You may wish to create a user & provide priveleges to the database and test database:
+```
+mysql> CREATE USER '<yourUsername>'@'localhost' IDENITIFIED BY '<yourPassword>'
+mysql> GRANT ALL PRIVILEGES ON infomanager.* TO '<yourUsername>'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON test_infomanager.* TO '<yourUsername>'@'localhost';
+```
 * Edit `/etc/my.cnf` with the required information
 ```
 [client]

@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'infomanager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'TEST': {'NAME': 'test_infomanager'},
         'OPTIONS': {
             # use below for linux config
             'read_default_file': '/etc/my.cnf',
